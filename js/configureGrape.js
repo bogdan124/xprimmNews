@@ -117,6 +117,8 @@
   }
   
   
+  editor.addComponents('<div class="cls">New component</div>');
+
   // Do stuff on load
   editor.on('load', function() {
     var $ = grapesjs.$;
@@ -131,3 +133,5 @@
     $('#gjs').append($('.ad-cont'));
   });
   
+
+

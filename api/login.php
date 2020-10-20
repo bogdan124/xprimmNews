@@ -18,7 +18,7 @@
             $query=$conn ->query($select);
             if($query->num_rows==1){
                 $this->buildCookies($this->$username,$this->$password);
-                header("Location:index.php");
+                header("Location:../templates/profile.html");
             }
             $conn->close();
 
@@ -34,8 +34,8 @@
         }
     }
 
-    $username=$_GET['username'];
-    $password=$_GET['password'];
+    $username=$_POST['username'];
+    $password=$_POST['password'];
     
     $login=new verifyLogin($username,$password);
 

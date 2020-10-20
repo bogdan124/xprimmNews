@@ -4,6 +4,27 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
+<style>
+ .content_news {
+    margin-left: 82px;
+}
+.move-left-button {
+    margin-left: 13%;
+    width: 86%;
+    color: white !important;
+}
+.imagine_news{
+  width: 174px;
+    height: 166px;
+}
+.add_news {
+    margin-bottom: 100px;
+}
+</style>
+
+
+
 <nav class="navbar navbar-expand-lg  border">
     <div class="container">
     <a class="navbar-brand" href="#"></a>
@@ -13,8 +34,9 @@
       
     <div class="collapse navbar-collapse"  id="navbarText">
     <ul class="navbar-nav mr-auto">
-            
-           
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
           </ul>
          </div></div>
        </nav>
@@ -23,17 +45,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3 ">
-		     <div class="list-group ">
-              <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-              <a href="#" class="list-group-item list-group-item-action">Option News</a>
-              <a href="#" class="list-group-item list-group-item-action">Builder</a>
-              <a href="#" class="list-group-item list-group-item-action">Send</a>
+		     <div class="list-group list-menu__">
+              <a href="#" onclick="showContent(1)" class="list-group-item list-group-item-action active">Dashboard</a>
+              <a href="#" onclick="showContent(2)" class="list-group-item list-group-item-action">Option News</a>
+              <a href="#" onclick="showContent(3)" class="list-group-item list-group-item-action">Builder</a>
+              <a href="#" onclick="showContent(4)"  class="list-group-item list-group-item-action">Send</a>
 
               
               
             </div> 
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-9" id="menu-1">
 		    <div class="card">
 		        <div class="card-body">
 		            <div class="row">
@@ -46,24 +68,6 @@
 		                <div class="col-md-12">
 		                    <form>
                               <div class="form-group row">
-                                <label for="username" class="col-4 col-form-label">User Name*</label> 
-                                <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">First Name</label> 
-                                <div class="col-8">
-                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Last Name</label> 
-                                <div class="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
                                 <label for="text" class="col-4 col-form-label">Nick Name*</label> 
                                 <div class="col-8">
                                   <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
@@ -74,36 +78,27 @@
                                 <div class="col-8">
                                   <select id="select" name="select" class="custom-select">
                                     <option value="admin">Admin</option>
+                                    <option value="admin">User</option>
                                   </select>
                                 </div>
                               </div>
+
+ 
                               <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Email*</label> 
+                                <label for="newpass" class="col-4 col-form-label">Password</label> 
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                  <input id="newpass" name="newpass" placeholder="Password" class="form-control here" type="password">
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="website" class="col-4 col-form-label">Website</label> 
-                                <div class="col-8">
-                                  <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
-                                <div class="col-8">
-                                  <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                </div>
-                              </div>
+                              </div> 
                               <div class="form-group row">
                                 <label for="newpass" class="col-4 col-form-label">New Password</label> 
                                 <div class="col-8">
-                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="password">
                                 </div>
                               </div> 
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
-                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                  <button name="submit" type="submit" class="btn btn-primary">Create Profile</button>
                                 </div>
                               </div>
                             </form>
@@ -112,6 +107,80 @@
 		            
 		        </div>
 		    </div>
-		</div>
+    </div>
+    
+
+		<div class="col-md-9" id="menu-2" >
+      <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                  <h4>Generate News</h4>
+                  <hr>
+                  <button name="submit" type="submit" class="btn btn-primary">Generate News</button>
+                  <hr>
+              </div>
+          </div>
+
+              <div class="row">
+                  <div class="col-md-12">
+                      <h4>Options News</h4>
+                      <hr>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                        <div class="form-group row">
+                          <label for="newpass" class="col-4 col-form-label">Select</label> 
+                          <div class="col-8">
+                            <input id="news_to_add" name="number" placeholder="Number of News to select" class="form-control here" type="number">
+                            <button name="submitSelectNews" type="submit" id="submitSelectNews"  class="btn btn-primary">Select by date</button>
+                          </div>
+                        </div> 
+                            <div class="form-group row">
+                              <label for="newpass" class="col-12 col-form-label"><b> Select News That you want to Add</b></label>  
+                            </div>
+                            <div class="add_news"></div>
+                            <div class="form-group row">
+                              <div class="offset-4 col-8">
+                                <button name="submit"  id="createTemplate-news" class="btn btn-primary">Add News</button>
+                              </div>
+                            </div>
+                     </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-12" id="appened_data">
+
+
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  
+
+
+
+  <div class="col-md-9" id="menu-3" >
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Builder</h4>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
 	</div>
 </div>
+
+<script src="../js/profile.js"></script>
