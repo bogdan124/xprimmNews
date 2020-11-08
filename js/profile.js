@@ -25,42 +25,6 @@ function showContent(getNumber){
   }
 }
 
-var globalNews;
-$("#submitSelectNews").click(function(e){
-  var news_to_add=$("#news_to_add").val();
-  e.preventDefault();
-  $(".add_news").html("");
-  $.ajax({
-    url: "../api/selectLastNews.php?news_number="+news_to_add, 
-    success: function(result){
-      
-      result=JSON.parse(result);
-      console.log( result);
-      globalNews=result;
-      for(i=0;i<result.length;i++){
-       var data=JSON.stringify(result[i]);
-       
-        $(".add_news").append(`<div class="content_news__">
-        <div class="row">
-          <div class="col-md-2">
-          
-          <img class="imagine_news" src="`+result[i].imagine_lead+`"/>
-          </div>
-          <div class="col-md-10">
-          <p class="content_news"><b>`+result[i].titlu+`</b></br>
-            `+result[i].lead+`
-          </p>
-          <a  id="add_`+result[i].ID_articol+`" onclick="addNewsObject('#add_`+result[i].ID_articol+`','`+result[i].ID_articol+`')" class="btn btn-primary move-left-button" >ADD</a>
-          </div>
-        
-        </div>
-        </div>`);
-      }
-      
-     }
-     
-  });
-});
 $(".move-left-button").click(function(e){
  
   e.preventDefault();
@@ -86,7 +50,9 @@ $("#createTemplate-news").click(function(e){
   var username="6d12ff27-0474-4edf-87dc-daaed23249c3";
   var password="f6808b17-c354-46d0-941f-496e72092e59";
   var data=createTemplate(globalNews);
-  console.log(data);
+  localStorage.setItem('data-to-send', data);
+  
+ // console.log(data);
   $.ajax({
     url: "https://api.mjml.io/v1/render", 
     type:"POST",
@@ -178,5 +144,8 @@ function createTemplate(objectToiterate){
   newsletter=newsletter+footer;
     return newsletter;
 }
-  
-  
+
+$("#Open-tab").click(function(e){
+  window.open("http://localhost:8181/newLetter/index.html");
+  e.preventDefault();
+});

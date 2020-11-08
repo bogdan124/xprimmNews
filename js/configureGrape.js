@@ -1,6 +1,8 @@
 
   CKEDITOR.dtd.$editable.a = 1;
 
+
+  
   var lp = './img/';
   var plp = 'http://placehold.it/350x250/';
   var images = [
@@ -50,7 +52,8 @@
   var pnm = editor.Panels;
   var cmdm = editor.Commands;
   var md = editor.Modal;
-  
+  var storeItem=localStorage.getItem('data-to-send');
+  editor.setComponents(storeItem);
   var newPanel = pnm.addPanel({
   id: 'myNewPanel',
  visible  : true,
@@ -92,17 +95,17 @@
   
   
   // Simple warn notifier
-  var origWarn = console.warn;
-  toastr.options = {
+  var origWarn = console.warn;//toastr
+  origWarn.options = {
     closeButton: true,
     preventDuplicates: true,
     showDuration: 250,
     hideDuration: 150
   };
-  console.warn = function (msg) {
-    toastr.warning(msg);
-    origWarn(msg);
-  };
+  //console.warn = function (msg) {
+    //  origWarn.warning(msg);
+    //origWarn(msg);
+  //};
   
   // Beautify tooltips
   var titles = document.querySelectorAll('*[title]');
@@ -117,17 +120,19 @@
   }
   
   
-  editor.addComponents('<div class="cls">New component</div>');
+  editor.addComponents(` 
+
+`);
 
   // Do stuff on load
   editor.on('load', function() {
     var $ = grapesjs.$;
   
     // Show logo with the version
-    var logoCont = document.querySelector('.gjs-logo-cont');
-    document.querySelector('.gjs-logo-version').innerHTML = 'v' + grapesjs.version;
-    var logoPanel = document.querySelector('.gjs-pn-commands');
-    logoPanel.appendChild(logoCont);
+   // var logoCont = document.querySelector('.gjs-logo-cont');
+   // document.querySelector('.gjs-logo-version').innerHTML = 'v' + grapesjs.version;
+   // var logoPanel = document.querySelector('.gjs-pn-commands');
+  //  logoPanel.appendChild(logoCont);
   
     // Move Ad
     $('#gjs').append($('.ad-cont'));

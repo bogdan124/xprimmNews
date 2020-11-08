@@ -1,0 +1,63 @@
+<div class="ui padded grid">
+    <div class="ui row"><h1>Evenimente</h1>
+        <hr/>
+        <br/></div>
+     
+        <div class="ui form">
+          <div class="inline fields">
+            <div class="eight wide field">
+              <label>Number</label>            
+              <input id="news_to_add" name="number" placeholder="Number of News to select" class="form-control here" type="number"/>
+            </div>
+      
+            <div class="five wide field">
+              <button name="submitSelectNews" type="submit" id="submitSelectNews"  class="ui primary button" >Select by date</button>
+              <button name="submit"  id="createTemplate-news" class="ui primary button">Add News</button>    
+            </div>
+          </div>
+        </div>
+  
+        <div class="ui grid">
+          <div class="three column row">
+            <div class="column"></div>
+            <div class="column"></div>
+            <div class="column"></div>
+          </div>
+          <div class="two column row">
+            <div class="column"><ul class="add_news" id="content_append"></ul></div>
+            <div class="column">
+                <div class="row">
+                  <ul class="col-md-12" id="appened_data">
+  
+  
+                  </ul>
+              </div>
+          </div>
+          </div>
+        </div>
+      
+  
+   
+   
+    
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../js/profile.js"></script>
+<script src="../js/sendRequestNews.js"></script>
+<script>
+    
+var globalNews;
+$("#submitSelectNews").click(function(e){
+  var news_to_add=$("#news_to_add").val();
+  e.preventDefault();
+  $(".add_news").html("");
+  globalNews=createRequestServer([171],news_to_add);
+  globalNews.done(function(r){
+    GlobalObject['evenimente']=JSON.parse(r);
+      console.log(GlobalObject);
+  });
+});
+$( "#content_append" ).sortable({scroll: false, scrollSensitivity: 100, scrollSpeed: 100 });
+$( "#content_append" ).disableSelection();
+</script>

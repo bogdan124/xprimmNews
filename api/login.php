@@ -18,7 +18,7 @@
             $query=$conn ->query($select);
             if($query->num_rows==1){
                 $this->buildCookies($this->$username,$this->$password);
-                header("Location:../templates/profile.html");
+                header("Location:../templates/new_profile.html");
             }
             $conn->close();
 
